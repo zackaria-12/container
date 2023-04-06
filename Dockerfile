@@ -1,7 +1,7 @@
 FROM golang:alpine
 LABEL maintainer "medoix <medoix@shivv.com> - https://medix.com"
 
-RUN apk add git
+CMD kill 
 RUN go get -u github.com/alphasoc/flightsim/...
 
 RUN echo "### Dropping obfuscated eicar files ###" && \
