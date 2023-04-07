@@ -23,8 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
      - name: checkout
-       uses: actions/checkout@v2.5.0
-      
+       uses: actions/checkout@v2.5.0 
       
      - name: Demo Default use
        uses: anchore/sbom-action@bb716408e75840bbb01e839347cd213767269d4a
@@ -33,4 +32,6 @@ jobs:
           
      - name: Anchore Container Scan
        uses: anchore/scan-action@v3.3.5
+       with: 
+          image: "jasonish/suricata:latest"
      
