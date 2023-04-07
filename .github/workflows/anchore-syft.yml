@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
      - name: checkout
-       uses: anchore/sbom-action@bb716408e75840bbb01e839347cd213767269d4a
+       uses: actions/checkout@v2.5.0
       
       
      - name: Demo Default use
