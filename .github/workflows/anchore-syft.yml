@@ -40,9 +40,9 @@ jobs:
     - name: Scan repository
       run: |
         cd container
-        anchore-cli image add my-image:latest
-        anchore-cli image wait my-image:latest
-        anchore-cli image content my-image:latest
+        anchore-cli image add jasonish/suricata:latest
+        anchore-cli image wait jasonish/suricata:latest
+        anchore-cli image content jasonish/suricata:latest --skip-distro-check
     
     - name: Scan Docker image
       run: |
