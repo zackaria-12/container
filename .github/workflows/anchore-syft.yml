@@ -44,4 +44,8 @@ jobs:
         anchore-cli image wait my-image:latest
         anchore-cli image content my-image:latest
     
-
+    - name: Scan Docker image
+      run: |
+        anchore-cli image add my-docker-repo/jasonish/suricata:latest
+        anchore-cli image wait my-docker-repo/jasonish/suricata:latest
+        anchore-cli image content my-docker-repo/jasonish/suricata:latest
