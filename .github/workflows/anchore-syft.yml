@@ -12,16 +12,21 @@
 # information about the Anchore SBOM tool, Syft, see
 # https://github.com/anchore/syft
 
-name: Container Image CI
-on: [push]
+
+name: Anchore Syft SBOM scan
+
+on:
+  push:
+    branches: [ "main" ]
 jobs:
-  build:
+  ex1-basic-Use:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.5.0
-      - name: Build the container image
-        run: docker build . --file Dockerfile --tag localbuild/testimage:latest
-      - uses: anchore/scan-action@bb716408e75840bbb01e839347cd213767269d4a
-        with:
-          image: "localbuild/testimage:latest"
-          fail-build: true
+    steps: 
+     - name: checkout
+       uses: actions/checkout@v2.5.0
+      
+      
+     - name: Demo Default use
+       uses: anchore/sbom-action@bb716408e75840bbb01e839347cd213767269d4a
+       with:
+          image: jasonish/suricata:latest
