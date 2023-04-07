@@ -16,36 +16,14 @@ name: Anchore Syft SBOM scan
 on:
   push:
     branches: [ "main" ]
-
-permissions:
-  contents: write
-
 jobs:
-  Anchore-Build-Scan:
-    permissions:
-      contents: write # required to upload to the Dependency submission API
+  ex1-basic-Use:
     runs-on: ubuntu-latest
-    steps:
-    - name: Checkout the code
-      uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag jasonish/suricata:latest
-    - name: Scan the image and upload dependency results
-      uses: anchore/sbom-action@bb716408e75840bbb01e839347cd213767269d4a
-      with:
-        image: "localbuild/testimage:latest"
-        artifact-name: image.spdx.json
-        dependency-snapshot: true
-    
-    - name: Scan repository
-      run: |
-        cd container
-        anchore-cli image add jasonish/suricata:latest
-        anchore-cli image wait jasonish/suricata:latest
-        anchore-cli image content jasonish/suricata:latest --skip-distro-check
-    
-    - name: Scan Docker image
-      run: |
-        anchore-cli image add my-docker-repo/jasonish/suricata:latest
-        anchore-cli image wait my-docker-repo/jasonish/suricata:latest
-        anchore-cli image content my-docker-repo/jasonish/suricata:latest
+    steps: 
+     - name: checkout
+       uses: actions/checkout@v2.5.0
+      
+      
+     - name: Demo Default use
+       uses: anchore/sbom-action@v2.5.0
+     
